@@ -127,4 +127,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'static/images'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,18 +1,14 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from .products import products
-
-
-@api_view(['GET'])
-def getProducts(request):
-    return Response(products)
+from .models import Product
+from .serializers import ProductSerializer
 
 
-@api_view(['GET'])
-def getProduct(request, pk):
-    product = None
-    for prod in products:
-        if prod['_id'] == pk:
-            product = prod
-    return Response(product)
+class ProductListCreateAPIView(ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ProductRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
